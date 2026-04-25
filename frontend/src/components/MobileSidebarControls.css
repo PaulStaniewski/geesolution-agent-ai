@@ -1,0 +1,67 @@
+.mobile-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 80;
+  background: rgba(2, 6, 23, 0.5);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+}
+
+.mobile-sidebar-controls {
+  position: fixed;
+  top: calc(env(safe-area-inset-top, 0px) + 12px);
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 90;
+  width: calc(100% - 24px);
+  max-width: 420px;
+}
+
+.mobile-sidebar-controls__inner {
+  display: flex;
+  gap: 6px;
+  padding: 6px;
+  border-radius: 18px;
+  border: 1px solid #334155;
+  background: rgba(15, 23, 42, 0.96);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.28);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.mobile-sidebar-controls__button {
+  flex: 1;
+  padding: 10px 12px;
+  border: none;
+  border-radius: 14px;
+  background: transparent;
+  color: #cbd5e1;
+  font-size: 0.82rem;
+  font-weight: 500;
+  line-height: 1;
+  cursor: pointer;
+  transition:
+    background 0.2s ease,
+    color 0.2s ease;
+}
+
+.mobile-sidebar-controls__button:hover {
+  background: #1e293b;
+}
+
+.mobile-sidebar-controls__button--active {
+  background: #2563eb;
+  color: #fff;
+}
+
+.mobile-sidebar-controls__button:focus-visible {
+  outline: 2px solid #3b82f6;
+  outline-offset: 2px;
+}
+
+@media (min-width: 1024px) {
+  .mobile-overlay,
+  .mobile-sidebar-controls {
+    display: none;
+  }
+}

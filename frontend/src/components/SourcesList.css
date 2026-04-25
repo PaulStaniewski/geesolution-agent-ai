@@ -1,0 +1,64 @@
+/* =========================================================
+   Sources
+   ========================================================= */
+
+.sources {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.sources-title {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #94a3b8;
+}
+
+.sources-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  margin: 0;
+  padding: 0;
+
+  list-style: none;
+}
+
+.sources-item {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+
+  font-size: 0.85rem;
+  line-height: 1.4;
+}
+
+.sources-link {
+  color: #93c5fd;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.sources-link:hover {
+  color: #bfdbfe;
+  text-decoration: underline;
+}
+
+.sources-link:focus-visible {
+  outline: 2px solid #60a5fa;
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+.sources-text {
+  color: #cbd5e1;
+}
+
+.sources-score {
+  font-size: 0.8rem;
+  color: #64748b;
+}

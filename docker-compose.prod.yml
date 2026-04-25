@@ -1,0 +1,82 @@
+services:
+  postgres:
+    image: pgvector/pgvector:pg16
+    env_file:
+      - ./.env.prod
+    environment:
+      POSTGRES_DB: ${DB_NAME}
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      PGDATA: /var/lib/postgresql/data/pgdata
+    volumes:
+      - pgdata_prod:/var/lib/postgresql/data/pgdata
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${DB_USER} -d ${DB_NAME}"]
+      interval: 10s
+      timeout: 5s
+      retries: 20
+    restart: unless-stopped
+
+  django:
+    image: agentai-django:prod
+    build:
+      context: .
+      dockerfile: backend/Dockerfile.prod
+    depends_on:
+      postgres:
+        condition: service_healthy
+    command: >
+      sh -c "python manage.py migrate &&
+            python manage.py collectstatic --noinput &&
+            gunicorn agent_ai.wsgi:application --bind 0.0.0.0:8000"
+    working_dir: /app
+    env_file:
+      - ./.env.prod
+    environment:
+      DEBUG: "False"
+      DATABASE_URL: postgresql://${DB_USER}:${DB_PASSWORD}@${DB_HOST}:${DB_PORT}/${DB_NAME}
+    expose:
+      - "8000"
+    restart: unless-stopped
+
+  fastapi:
+    image: agentai-fastapi:prod
+    build:
+      context: .
+      dockerfile: backend/Dockerfile.prod
+    depends_on:
+      postgres:
+        condition: service_healthy
+    command: >
+      uvicorn streaming.main:app
+      --host 0.0.0.0
+      --port 8001
+      --log-level info
+    working_dir: /app
+    env_file:
+      - ./.env.prod
+    environment:
+      DEBUG: "False"
+      DATABASE_URL: postgresql://${DB_USER}:${DB_PASSWORD}@${DB_HOST}:${DB_PORT}/${DB_NAME}
+    expose:
+      - "8001"
+    restart: unless-stopped
+
+  frontend:
+    image: agentai-frontend:prod
+    build:
+      context: .
+      dockerfile: frontend/Dockerfile.prod
+      args:
+        VITE_DJANGO_API_URL: ${VITE_DJANGO_API_URL}
+        VITE_FASTAPI_URL: ${VITE_FASTAPI_URL}
+        VITE_STREAM_URL: ${VITE_STREAM_URL}
+    depends_on:
+      - django
+      - fastapi
+    ports:
+      - "3000:80"
+    restart: unless-stopped
+
+volumes:
+  pgdata_prod:

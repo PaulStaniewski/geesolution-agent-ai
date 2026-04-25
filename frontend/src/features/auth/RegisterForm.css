@@ -1,0 +1,170 @@
+/* =========================================================
+   Register form header
+   ========================================================= */
+
+.register-form__header {
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.register-form__eyebrow {
+  margin-bottom: 0.5rem;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: #60a5fa;
+}
+
+.register-form__title {
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.register-form__subtitle {
+  margin-top: 0.5rem;
+  font-size: 0.875rem;
+  color: #94a3b8;
+}
+
+/* =========================================================
+   Form
+   ========================================================= */
+
+.register-form__form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.register-form__field {
+  display: flex;
+  flex-direction: column;
+}
+
+.register-form__label {
+  margin-bottom: 0.5rem;
+  display: block;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #cbd5e1;
+}
+
+.register-form__input {
+  width: 100%;
+  box-sizing: border-box;
+  border: 1px solid #334155;
+  border-radius: 0.75rem;
+  background: #1e293b;
+  padding: 0.75rem 1rem;
+  font-size: 0.875rem;
+  color: #ffffff;
+  outline: none;
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    background-color 0.2s ease;
+}
+
+.register-form__input::placeholder {
+  color: #94a3b8;
+}
+
+.register-form__input:focus {
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.2);
+}
+
+.register-form__password-wrapper {
+  position: relative;
+}
+
+.register-form__input--password {
+  padding-right: 6rem;
+}
+
+.register-form__toggle-password {
+  position: absolute;
+  top: 50%;
+  right: 0.75rem;
+  transform: translateY(-50%);
+  border: none;
+  background: transparent;
+  padding: 0;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #94a3b8;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.register-form__toggle-password:hover {
+  color: #ffffff;
+}
+
+/* =========================================================
+   Error + submit
+   ========================================================= */
+
+.register-form__error {
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  border-radius: 0.75rem;
+  background: rgba(239, 68, 68, 0.1);
+  padding: 0.75rem 1rem;
+  font-size: 0.875rem;
+  color: #fca5a5;
+}
+
+.register-form__submit {
+  width: 100%;
+  border: none;
+  border-radius: 0.75rem;
+  background: #2563eb;
+  padding: 0.75rem 1rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #ffffff;
+  cursor: pointer;
+  transition:
+    background-color 0.2s ease,
+    opacity 0.2s ease;
+}
+
+.register-form__submit:hover {
+  background: #1d4ed8;
+}
+
+.register-form__submit:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+/* =========================================================
+   Mobile switch
+   ========================================================= */
+
+.register-form__mobile-switch {
+  text-align: center;
+}
+
+.register-form__mobile-switch-button {
+  border: none;
+  background: transparent;
+  padding: 0;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #60a5fa;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.register-form__mobile-switch-button:hover {
+  color: #93c5fd;
+}
+
+@media (min-width: 1024px) {
+  .register-form__mobile-switch {
+    display: none;
+  }
+}

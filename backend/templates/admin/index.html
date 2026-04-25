@@ -1,0 +1,16 @@
+{% extends "admin/index.html" %} {% block content %}
+<div class="dashboard-module">
+  <h2>Akcje globalne</h2>
+  <ul>
+    <li>
+      <a
+        href="{% url 'custom_admin:custom_admin_wipe_all' %}"
+        onclick="return confirm('Czy na pewno chcesz usunąć wszystko?')"
+        class="button deletelink"
+      >
+        💣 Usuń wszystkie dane i pliki
+      </a>
+    </li>
+  </ul>
+</div>
+{{ block.super }} {% endblock %}

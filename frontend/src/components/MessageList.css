@@ -1,0 +1,98 @@
+/* =========================================================
+   Message list layout
+   ========================================================= */
+
+.message-list {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  min-height: 0;
+}
+
+.message-row {
+  display: flex;
+  width: 100%;
+}
+
+.message-row--user {
+  justify-content: flex-end;
+}
+
+.message-row--bot {
+  justify-content: flex-start;
+}
+
+/* =========================================================
+   Message bubbles
+   ========================================================= */
+
+.message-bubble {
+  margin-bottom: 18px;
+  padding: 10px 14px;
+  border-radius: 18px;
+  line-height: 1.5;
+  word-break: break-word;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
+
+  max-width: min(85%, 900px);
+}
+
+.message-user {
+  align-self: flex-end;
+  background: linear-gradient(135deg, #2563eb, #3b82f6);
+  color: #ffffff;
+  border-bottom-right-radius: 8px;
+}
+
+.message-bot {
+  align-self: flex-start;
+  background: #1e293b;
+  border: 1px solid #334155;
+  color: #e2e8f0;
+  border-bottom-left-radius: 8px;
+}
+
+/* =========================================================
+   Sources block
+   ========================================================= */
+
+.message-sources {
+  margin-top: 0.75rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid rgba(51, 65, 85, 0.6);
+}
+
+/* =========================================================
+   Streaming state
+   ========================================================= */
+
+.streaming {
+  position: relative;
+}
+
+/* =========================================================
+   Inline correctness markers
+   ========================================================= */
+
+.correct {
+  color: #22c55e;
+  font-weight: 700;
+}
+
+.incorrect {
+  color: #ef4444;
+  font-weight: 700;
+}
+
+/* =========================================================
+   Responsive
+   ========================================================= */
+
+@media (max-width: 640px) {
+  .message-bubble {
+    max-width: 100%;
+    padding: 9px 12px;
+    margin-bottom: 14px;
+    font-size: 0.9375rem;
+  }
+}

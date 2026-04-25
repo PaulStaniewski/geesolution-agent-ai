@@ -1,0 +1,220 @@
+/* =========================================================
+   Login panel
+   ========================================================= */
+
+.login-panel__header {
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.login-panel__eyebrow {
+  margin-bottom: 0.5rem;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: #60a5fa;
+}
+
+.login-panel__title {
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.login-panel__subtitle {
+  margin-top: 0.5rem;
+  font-size: 0.875rem;
+  color: #94a3b8;
+}
+
+/* =========================================================
+   Form
+   ========================================================= */
+
+.login-panel__form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.login-panel__field {
+  display: flex;
+  flex-direction: column;
+}
+
+.login-panel__label {
+  margin-bottom: 0.5rem;
+  display: block;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #cbd5e1;
+}
+
+.login-panel__input {
+  width: 100%;
+  border: 1px solid #334155;
+  border-radius: 0.75rem;
+  background: #1e293b;
+  padding: 0.75rem 1rem;
+  font-size: 0.875rem;
+  color: #ffffff;
+  outline: none;
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    background-color 0.2s ease;
+  box-sizing: border-box;
+}
+
+.login-panel__input::placeholder {
+  color: #94a3b8;
+}
+
+.login-panel__input:focus {
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.2);
+}
+
+.login-panel__password-wrapper {
+  position: relative;
+}
+
+.login-panel__input--password {
+  padding-right: 6rem;
+}
+
+.login-panel__toggle-password {
+  position: absolute;
+  top: 50%;
+  right: 0.75rem;
+  transform: translateY(-50%);
+  border: none;
+  background: transparent;
+  padding: 0;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #94a3b8;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.login-panel__toggle-password:hover {
+  color: #ffffff;
+}
+
+/* =========================================================
+   Options row
+   ========================================================= */
+
+.login-panel__options {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+.login-panel__remember {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.875rem;
+  color: #94a3b8;
+  cursor: pointer;
+}
+
+.login-panel__checkbox {
+  width: 1rem;
+  height: 1rem;
+  accent-color: #3b82f6;
+  cursor: pointer;
+}
+
+.login-panel__forgot-link {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #60a5fa;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.login-panel__forgot-link:hover {
+  color: #93c5fd;
+}
+
+/* =========================================================
+   Error + submit
+   ========================================================= */
+
+.login-panel__error {
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  border-radius: 0.75rem;
+  background: rgba(239, 68, 68, 0.1);
+  padding: 0.75rem 1rem;
+  font-size: 0.875rem;
+  color: #fca5a5;
+}
+
+.login-panel__submit {
+  width: 100%;
+  border: none;
+  border-radius: 0.75rem;
+  background: #2563eb;
+  padding: 0.75rem 1rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #ffffff;
+  cursor: pointer;
+  transition:
+    background-color 0.2s ease,
+    opacity 0.2s ease;
+}
+
+.login-panel__submit:hover {
+  background: #1d4ed8;
+}
+
+.login-panel__submit:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+/* =========================================================
+   Mobile switch
+   ========================================================= */
+
+.login-panel__mobile-switch {
+  text-align: center;
+}
+
+.login-panel__mobile-switch-button {
+  border: none;
+  background: transparent;
+  padding: 0;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #60a5fa;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.login-panel__mobile-switch-button:hover {
+  color: #93c5fd;
+}
+
+@media (min-width: 1024px) {
+  .login-panel__mobile-switch {
+    display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .login-panel__options {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .login-panel__forgot-link {
+    align-self: flex-end;
+  }
+}

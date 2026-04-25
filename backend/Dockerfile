@@ -1,0 +1,33 @@
+FROM python:3.12-slim
+
+ENV PYTHONDONTWRITEBYTECODE=1 \
+    PYTHONUNBUFFERED=1 \
+    PIP_NO_CACHE_DIR=1 \
+    HF_HOME=/models/hf \
+    HUGGINGFACE_HUB_CACHE=/models/hf \
+    SENTENCE_TRANSFORMERS_HOME=/models/hf \
+    TOKENIZERS_PARALLELISM=false
+
+WORKDIR /app
+
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    build-essential gcc libpq-dev curl \
+ && rm -rf /var/lib/apt/lists/*
+
+COPY backend/requirements.txt /app/requirements.txt
+
+RUN python -m pip install --upgrade pip && \
+    python -m pip install --no-cache-dir -r /app/requirements.txt && \
+    python - <<'PY'
+import importlib, sys
+try:
+    importlib.import_module("drf_spectacular")
+    print("drf_spectacular OK")
+except Exception as e:
+    print("drf_spectacular MISSING:", e, file=sys.stderr)
+    sys.exit(1)
+PY
+
+COPY backend /app
+
+CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]

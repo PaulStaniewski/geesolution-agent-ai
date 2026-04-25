@@ -1,0 +1,201 @@
+/* =========================================================
+   Markdown container
+   ========================================================= */
+
+.message-bubble.markdown-container {
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+.markdown-container p,
+.markdown-container ul,
+.markdown-container ol,
+.markdown-container blockquote,
+.markdown-container pre,
+.markdown-container table {
+  margin: 0.5rem 0;
+}
+
+.markdown-container ul {
+  padding-left: 1.5rem;
+  list-style-type: disc;
+  list-style-position: outside;
+}
+
+.markdown-container ol {
+  padding-left: 1.5rem;
+  list-style-type: decimal;
+  list-style-position: outside;
+}
+
+.markdown-container li {
+  margin: 0.25rem 0;
+}
+
+/* =========================================================
+   Headings
+   ========================================================= */
+
+.markdown-container h1,
+.markdown-container h2,
+.markdown-container h3,
+.markdown-container h4 {
+  margin: 0.75rem 0 0.5rem;
+  font-weight: 700;
+  color: #f8fafc;
+}
+
+.markdown-container h1 {
+  padding-bottom: 4px;
+  border-bottom: 2px solid #3b82f6;
+  font-size: 1.5rem;
+}
+
+.markdown-container h2 {
+  font-size: 1.3rem;
+}
+
+.markdown-container h3 {
+  font-size: 1.1rem;
+}
+
+.markdown-container h4 {
+  font-size: 1rem;
+}
+
+/* =========================================================
+   Blockquote
+   ========================================================= */
+
+.markdown-container blockquote {
+  margin: 0.75rem 0;
+  padding-left: 12px;
+
+  border-left: 4px solid #3b82f6;
+  border-radius: 8px;
+
+  background: rgba(30, 41, 59, 0.7);
+  color: #cbd5e1;
+
+  font-style: italic;
+}
+
+/* =========================================================
+   Code
+   ========================================================= */
+
+.md-pre {
+  overflow-x: auto;
+  margin: 12px 0;
+  padding: 14px 16px;
+
+  border: 1px solid rgba(148, 163, 184, 0.18);
+  border-radius: 14px;
+
+  background: #020617;
+  white-space: pre;
+}
+
+.md-pre code {
+  display: block;
+  margin: 0;
+  padding: 0;
+
+  background: transparent;
+  white-space: inherit;
+  text-indent: 0;
+}
+
+.md-code-block {
+  font-family: "Fira Code", "Consolas", "Courier New", monospace;
+  font-size: 0.95rem;
+  line-height: 1.65;
+}
+
+.md-inline-code {
+  padding: 0.12rem 0.4rem;
+
+  border-radius: 6px;
+
+  background: rgba(148, 163, 184, 0.18);
+  color: #f8fafc;
+
+  font-family: "Fira Code", "Consolas", "Courier New", monospace;
+  font-size: 0.92em;
+
+  word-break: break-word;
+}
+
+.markdown-container pre {
+  overflow-x: auto;
+}
+
+.markdown-container code {
+  word-break: break-word;
+}
+
+.markdown-container .hljs {
+  border-radius: 10px;
+  background: #020617;
+  color: #e2e8f0;
+}
+
+/* =========================================================
+   Tables
+   ========================================================= */
+
+.markdown-container table {
+  width: 100%;
+  margin: 12px 0 16px;
+
+  overflow: hidden;
+  table-layout: fixed;
+  border: 1px solid #334155;
+  border-collapse: collapse;
+  border-radius: 10px;
+
+  background: #0f172a;
+
+  font-size: 14px;
+  line-height: 1.35;
+}
+
+.markdown-container thead th {
+  padding: 8px 10px;
+
+  border: 1px solid #1d4ed8;
+
+  background: #2563eb;
+  color: #ffffff;
+
+  text-align: center;
+  vertical-align: top;
+  font-weight: 600;
+
+  white-space: normal;
+  overflow-wrap: anywhere;
+  hyphens: auto;
+}
+
+.markdown-container td {
+  padding: 8px 10px;
+
+  border: 1px solid #334155;
+
+  color: #e2e8f0;
+  text-align: left;
+  vertical-align: top;
+
+  white-space: normal;
+  word-break: normal;
+  overflow-wrap: break-word;
+  hyphens: auto;
+}
+
+.markdown-container tbody tr:nth-child(even) {
+  background: rgba(30, 41, 59, 0.65);
+}
+
+.markdown-container tbody tr:hover {
+  background: rgba(59, 130, 246, 0.12);
+}

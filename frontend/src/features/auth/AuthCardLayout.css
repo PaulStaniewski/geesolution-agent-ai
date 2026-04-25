@@ -1,0 +1,83 @@
+/* =========================================================
+   Root layout
+   ========================================================= */
+
+.auth-card-layout {
+  position: relative;
+  display: flex;
+  min-height: 100vh;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  padding: 2rem 1rem;
+  background: linear-gradient(to bottom right, #0f172a, #1e293b, #0f172a);
+}
+
+.auth-card-layout__glow {
+  pointer-events: none;
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(96px);
+}
+
+.auth-card-layout__glow--blue {
+  top: -10rem;
+  left: -10rem;
+  width: 24rem;
+  height: 24rem;
+  background: rgba(59, 130, 246, 0.2);
+}
+
+.auth-card-layout__glow--purple {
+  right: -10rem;
+  bottom: -10rem;
+  width: 24rem;
+  height: 24rem;
+  background: rgba(168, 85, 247, 0.2);
+}
+
+/* =========================================================
+   Container and card
+   ========================================================= */
+
+.auth-card-layout__container {
+  position: relative;
+  width: 100%;
+  max-width: 32rem;
+}
+
+.auth-card-layout__frame-glow {
+  position: absolute;
+  inset: -1px;
+  border-radius: 32px;
+  background: linear-gradient(to right, #3b82f6, #8b5cf6, #3b82f6);
+  opacity: 0.8;
+  filter: blur(6px);
+}
+
+.auth-card-layout__card {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid #334155;
+  border-radius: 32px;
+  background: rgba(15, 23, 42, 0.9);
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  padding: 2rem;
+}
+
+@media (max-width: 640px) {
+  .auth-card-layout {
+    padding: 1rem;
+  }
+
+  .auth-card-layout__card,
+  .auth-card-layout__frame-glow {
+    border-radius: 24px;
+  }
+
+  .auth-card-layout__card {
+    padding: 1.5rem 1rem;
+  }
+}

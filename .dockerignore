@@ -1,0 +1,97 @@
+# =========================
+# Git
+# =========================
+
+.git
+.gitignore
+.dockerignore
+
+# =========================
+# Python
+# =========================
+
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.sqlite3
+*.db
+
+.pytest_cache/
+.mypy_cache/
+
+.coverage
+.coverage.*
+htmlcov/
+
+pip-wheel-metadata/
+
+# =========================
+# Virtualenv
+# =========================
+
+.venv/
+venv/
+env/
+
+# =========================
+# Logs
+# =========================
+
+*.log
+
+# =========================
+# IDE / OS
+# =========================
+
+.vscode/
+.idea/
+.DS_Store
+
+# =========================
+# Secrets
+# =========================
+
+.env
+.env.*
+!.env.example
+
+# =========================
+# Backend uploads / generated content
+# =========================
+
+media/
+uploads/
+staticfiles/
+
+# =========================
+# Frontend
+# =========================
+
+frontend/node_modules/
+frontend/dist/
+frontend/build/
+
+# =========================
+# General build artifacts
+# =========================
+
+dist/
+build/
+coverage/
+
+# =========================
+# Models and heavy artifacts
+# =========================
+
+models/
+*.pt
+*.bin
+*.onnx
+*.safetensors
+
+# =========================
+# Node
+# =========================
+
+node_modules/
