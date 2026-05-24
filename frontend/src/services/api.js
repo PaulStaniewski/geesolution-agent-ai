@@ -160,24 +160,6 @@ export const sendMessageWithStream = (
     return { close: safeClose };
 };
 
-// Saving messages
-export const saveMessageToDatabase = async (
-    message,
-    conversationId,
-    botReply = null
-) => {
-    try {
-        await api.post("/chat/", {
-            message,
-            conversation_id: conversationId,
-            bot_reply: botReply !== null ? botReply : undefined,
-        });
-    } catch (err) {
-        console.error("Error saving message:", err.response?.data || err.message);
-        throw err;
-    }
-};
-
 // Uploading documents
 export const uploadDocument = async (files, title) => {
     const list = Array.from(files || []);
