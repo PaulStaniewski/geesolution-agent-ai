@@ -37,3 +37,27 @@ def test_user_cannot_read_messages_from_another_users_conversation():
     )
 
     assert response.status_code == 404
+
+@pytest.mark.django_db
+def test_user_cannot_delete_another_users_conversation():
+    owner = User.objects.create_user(
+        email="owner2@example.com",
+        password="StrongPass123",
+    )
+    intruder = User.objects.create_user(
+        email="intruder2@example.com",
+        password="StrongPass123",
+    )
+
+    conversation = Conversation.objects.create(
+        user=owner,
+        name="Owner conversation",
+    )
+
+    client = APIClient()
+    client.force_authenticate(user=intruder)
+
+    response = client.delete(f"/api/v1/conversations/{conversation.id}/")
+
+    assert response.status_code == 404
+    assert Conversation.objects.filter(id=conversation.id).exists()
