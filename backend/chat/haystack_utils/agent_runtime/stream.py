@@ -95,18 +95,18 @@ async def get_streamed_answer_text(
         return result.text
 
     except Exception as e:
-        import traceback
+        print(
+            f"[STREAM ERROR] get_streamed_answer_text failed: "
+            f"{type(e).__name__}: {e}"
+        )
 
-        print(f"[STREAM ERROR] get_streamed_answer_text failed: {e}")
-        traceback.print_exc()
-
-        friendly_error = "Wystąpił błąd podczas generowania odpowiedzi. Spróbuj ponownie."
+        friendly_error = (
+            "Wystąpił błąd podczas generowania odpowiedzi. "
+            "Spróbuj ponownie."
+        )
 
         try:
-            await queue.put({
-                "type": "error",
-                "content": friendly_error,
-            })
+            await queue.put(friendly_error)
         except Exception:
             pass
 
