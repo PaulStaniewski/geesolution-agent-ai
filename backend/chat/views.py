@@ -36,10 +36,13 @@ MAX_FILE_BYTES = 25 * 1024 * 1024  # 25MB
 )
 class ChatbotResponse(APIView):
     """
-    API view to handle user messages in a chatbot conversation.
-    - Receives a user message and bot reply.
-    - Saves the message to the database under the specified conversation.
-    - Automatically updates the 'updated_at' field of the conversation.
+    Legacy API view for manually saving completed chatbot exchanges.
+
+    Current primary chat flow:
+    - FastAPI SSE endpoint streams the response.
+    - Haystack runtime persists the user message and assistant reply.
+
+    This endpoint is kept for backward compatibility and manual/fallback saves.
     """
     permission_classes = [IsAuthenticated]
     serializer_class = MessageSerializer
@@ -47,8 +50,7 @@ class ChatbotResponse(APIView):
     @extend_schema(
         summary="Save chatbot exchange",
         description=(
-            "Saves a user message and assistant reply in an existing conversation "
-            "owned by the authenticated user."
+            "Legacy endpoint. The current streaming flow persists messages in the Haystack runtime."
         ),
         request=ChatbotSaveRequestSerializer,
         responses={
@@ -122,19 +124,34 @@ class ChatbotResponse(APIView):
 @extend_schema(
     tags=["Messages"],
 )
+@extend_schema(
+    tags=["Messages"],
+)
 class MessageListView(APIView):
     """
     API view for retrieving messages within a specific conversation.
 
+    Current primary chat flow:
+    - FastAPI SSE endpoint streams assistant responses.
+    - Haystack runtime persists user messages and assistant replies.
+
+    This API view is mainly used for:
+    - retrieving conversation history,
+    - legacy/manual message creation flows.
+
     Methods:
     - GET: Returns all messages in a conversation (if owned by the user).
+    - POST: Legacy/manual message creation endpoint.
     """
     permission_classes = [IsAuthenticated]
     serializer_class = MessageSerializer
 
     @extend_schema(
         summary="List messages in conversation",
-        description="Returns all messages for a conversation owned by the authenticated user.",
+        description=(
+            "Returns all messages for a conversation owned by the "
+            "authenticated user."
+        ),
         parameters=[
             OpenApiParameter(
                 name="conversation_id",
@@ -170,13 +187,25 @@ class MessageListView(APIView):
             user=request.user,
         )
 
-        messages = Message.objects.filter(conversation=conversation).order_by("created_at")
+        messages = Message.objects.filter(
+            conversation=conversation
+        ).order_by("created_at")
+
         serializer = MessageSerializer(messages, many=True)
-        return Response(serializer.data, status=status.HTTP_200_OK)
+
+        return Response(
+            serializer.data,
+            status=status.HTTP_200_OK,
+        )
 
     @extend_schema(
-        summary="Create message in conversation",
-        description="Creates a new message entry in an existing conversation.",
+        summary="Create message in conversation (legacy)",
+        description=(
+            "Legacy/manual endpoint for creating message entries in an "
+            "existing conversation.\n\n"
+            "The current production chat flow persists messages directly "
+            "inside the Haystack runtime during SSE streaming."
+        ),
         request=MessageCreateRequestSerializer,
         responses={
             201: MessageCreateResponseSerializer,
@@ -233,6 +262,7 @@ class MessageListView(APIView):
             )
 
         message = serializer.save()
+
         conversation.updated_at = message.created_at
         conversation.save(update_fields=["updated_at"])
 
@@ -245,7 +275,7 @@ class MessageListView(APIView):
         )
 
 
-# === NOWE helpery filtrów (bez top_k) ===
+
 def F_EQ(field: str, value):
     return {"field": field, "operator": "==", "value": value}
 
