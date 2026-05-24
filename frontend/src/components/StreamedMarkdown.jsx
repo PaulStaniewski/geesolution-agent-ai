@@ -2,7 +2,6 @@ import React from "react";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import remarkMath from "remark-math";
-import rehypeRaw from "rehype-raw";
 import rehypeHighlight from "rehype-highlight";
 
 import "./StreamedMarkdown.css";
@@ -29,7 +28,7 @@ function isQuizish(text = "") {
 }
 
 function insertBreakBeforeFirstA(text) {
-    return text.replace(/([?.!])\s*(a\))/i, "$1<br>$2");
+    return text.replace(/([?.!])\s*(a\))/i, "$1\n\n$2");
 }
 
 function numberLeadingDots(text) {
@@ -83,8 +82,8 @@ const StableMarkdown = React.memo(
                 remarkPlugins={[remarkGfm, remarkMath]}
                 rehypePlugins={
                     highlight
-                        ? [rehypeRaw, [rehypeHighlight, { detect: false, ignoreMissing: true }]]
-                        : [rehypeRaw]
+                        ? [[rehypeHighlight, { detect: false, ignoreMissing: true }]]
+                        : []
                 }
             >
                 {content}
