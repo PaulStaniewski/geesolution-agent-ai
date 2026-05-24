@@ -52,6 +52,7 @@ services:
       --host 0.0.0.0
       --port 8001
       --log-level info
+      --no-access-log
     working_dir: /app
     env_file:
       - ./.env.prod
