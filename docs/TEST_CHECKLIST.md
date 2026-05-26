@@ -219,9 +219,9 @@ Automatic restoration of the active conversation after page refresh is still not
 
 | ID    | Test Case      | Steps            | Expected Result         | Priority | Status |
 | ----- | -------------- | ---------------- | ----------------------- | -------- | ------ |
-| UI-01 | Initial load   | Open application | No visual glitches      | Critical | ☐      |
-| UI-02 | Loading states | Trigger loading  | Clear loading indicator | High     | ☐      |
-| UI-03 | Error messages | Trigger error    | User-friendly message   | High     | ☐      |
+| UI-01 | Initial load   | Open application | No visual glitches      | Critical | ☑      |
+| UI-02 | Loading states | Trigger loading  | Clear loading indicator | High     | ☑      |
+| UI-03 | Error messages | Trigger error    | User-friendly message   | High     | ☑      |
 
 ---
 
@@ -229,10 +229,10 @@ Automatic restoration of the active conversation after page refresh is still not
 
 | ID    | Test Case           | Steps               | Expected Result     | Priority | Status |
 | ----- | ------------------- | ------------------- | ------------------- | -------- | ------ |
-| UI-04 | Auto-scroll         | Send messages       | Scroll follows chat | Critical | ☐      |
-| UI-05 | No flicker          | Finish streaming    | Stable UI           | Critical | ☐      |
-| UI-06 | Markdown rendering  | Generate code block | Proper formatting   | High     | ☐      |
-| UI-07 | Long message layout | Send long response  | Layout intact       | High     | ☐      |
+| UI-04 | Auto-scroll         | Send messages       | Scroll follows chat | Critical | ☑      |
+| UI-05 | No flicker          | Finish streaming    | Stable UI           | Critical | ☑      |
+| UI-06 | Markdown rendering  | Generate code block | Proper formatting   | High     | ☑      |
+| UI-07 | Long message layout | Send long response  | Layout intact       | High     | ☑      |
 
 ---
 
